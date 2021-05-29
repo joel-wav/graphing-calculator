@@ -72,26 +72,3 @@ document.querySelector('#field').addEventListener('keyup',function() {
     drawCurveAndGraph();
 }); 
 
-/*
-document.querySelector('#xmin').addEventListener('keyup',function() { 
-    xMin = document.querySelector('#xmin').value;
-    xSpace = xMax - xMin;
-    drawCurveAndGraph();
-});
-
-document.querySelector('#xmax').addEventListener('keyup',function() { 
-    xMax = document.querySelector('#xmax').value;
-    xSpace = xMax - xMin;
-    drawCurveAndGraph();
-}); 
-document.querySelector('#ymin').addEventListener('keyup',function() { 
-    yMin = document.querySelector('#ymin').value;
-    ySpace = yMax - yMin;
-    drawCurveAndGraph();
-}); 
-document.querySelector('ymax').addEventListener('keyup',function() { 
-    yMax = document.querySelector('#ymax').value;
-    ySpace = yMax - yMin;
-    drawCurveAndGraph();
-}); 
-*/
