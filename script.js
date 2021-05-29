@@ -16,7 +16,7 @@ var math = mathjs(), expr = '', scope = { x : 0 };
 var tree = math.parse(expr, scope);  // mathjs allows to parse expressions entered as strings
 
 function drawCurveAndGraph() {
-    var i, j, k, n = 100000, percentX, percentY, xPixel, yPixel, mathX, mathY;
+    var i, j, k, n = 100000, percentX, percentY, xPixel, yPixel, mathX, mathY, tickX, tickY;
     
     ctx.clearRect(0,0,canvas.width,canvas.height);
     //ctx.drawGraph();
@@ -45,6 +45,32 @@ function drawCurveAndGraph() {
     ctx.lineWidth = 0.5;
     ctx.stroke();
 
+    //tick marks with values on the x and y axes respectively 
+    ctx.beginPath();
+    for(tickX = 0 ; tickX <= xSpace ; tickX++) {
+        
+        ctx.moveTo((tickX*canvas.width)/xSpace,((1+yMin/ySpace)*canvas.height)-3);
+        ctx.lineTo((tickX*canvas.width)/xSpace,((1+yMin/ySpace)*canvas.height)+3);
+        if (xMin + tickX == 0)
+            continue;
+        ctx.font = '12px Arial';
+        ctx.align = 'start';
+        ctx.fillText(xMin + tickX,(tickX*canvas.width)/xSpace,((1+yMin/ySpace)*canvas.height)+15);
+    }
+    for(tickY = 0 ; tickY <= ySpace ; tickY++) {
+        
+        ctx.moveTo(((-xMin/xSpace)*canvas.width)-3,(tickY*canvas.height)/ySpace);
+        ctx.lineTo(((-xMin/xSpace)*canvas.width)+3,(tickY*canvas.height)/ySpace);
+        if (yMin + tickY == 0)
+            continue;
+        ctx.font = '12px Arial';
+        ctx.align = 'start';
+        ctx.fillText(yMin + tickY,((-xMin/xSpace)*canvas.width)-15,(tickY*canvas.height)/ySpace);
+    }
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
     //for graphing the actual function
     ctx.beginPath();
     for(k = 0 ; k < n  ; k++) {
@@ -71,4 +97,3 @@ document.querySelector('#field').addEventListener('keyup',function() {
     tree = math.parse(expr, scope);
     drawCurveAndGraph();
 }); 
-
