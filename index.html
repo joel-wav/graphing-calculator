@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--to load up mathjs without downloading it locally -->
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/mathjs/0.15.0/math.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+    <title>Graphing Calc</title>
+</head>
+<body>
+    <h1>Graphing Calculator</h1>
+    <p>
+        xmin: <input id = "xmin" type = "number">
+        xmax: <input id = "xmax" type = "number">
+        ymin: <input id = "ymin" type = "number">
+        ymax: <input id = "ymax" type = "number">
+        expression: <input id = "field" type = "text">
+    </p>
+
+    <canvas id = "myCanvas"></canvas>
+    <script src = "script.js"></script>
+</body>
+</html>
