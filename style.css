@@ -1,7 +1,59 @@
 body {
-    background-color: bisque;
+    background-color: aliceblue;
 }
 h1 {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: jaf-domus-titling-web, sans-serif;
+    font-weight: 200;
+    font-style: normal;
     text-align: center;
+}
+
+canvas {
+    position: relative;
+    top: 20px;
+    bottom: 0px;
+}
+
+.windowdimensions {
+    width: 35px;
+    height: 35px;
+}
+
+#window {
+    display: grid;
+    grid-template-columns: 75px 75px 75px 75px;
+    grid-template-rows: 50px 50px;
+    place-self: center center; 
+    position: relative;
+    top: -30px;
+}
+
+
+
+#subheading {
+    font-family: canada-type-gibson, sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    
+}
+
+h2 {
+    font-size: 200%;
+}
+
+p {
+    font-family: usual,sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+#note {
+    position: relative;
+    top: -10px;
+    font-size: 80%;
+}
+
+#exprn {
+    position: relative;
+    top: -20px;
 }
