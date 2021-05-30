@@ -1,6 +1,6 @@
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
-canvas.width = 1000, canvas.height = 1000; 
+canvas.width = window.innerWidth, canvas.height = 800; 
 
 //defining window dimensions
 var xMin = -10, xMax = 10, yMin = -10, yMax = 10;
@@ -49,9 +49,9 @@ function drawCurveAndGraph() {
     ctx.beginPath();
     for(tickX = 0 ; tickX <= xSpace ; tickX++) {
         
-        ctx.moveTo((tickX*canvas.width)/xSpace,((1+yMin/ySpace)*canvas.height)-3);
-        ctx.lineTo((tickX*canvas.width)/xSpace,((1+yMin/ySpace)*canvas.height)+3);
-        if (xMin + tickX == 0)
+        ctx.moveTo((tickX/xSpace)*canvas.width,((1+yMin/ySpace)*canvas.height)-3);
+        ctx.lineTo((tickX/xSpace)*canvas.width,((1+yMin/ySpace)*canvas.height)+3);
+        if (xMin + tickX === 0)
             continue;
         ctx.font = '12px Arial';
         ctx.align = 'start';
@@ -59,13 +59,13 @@ function drawCurveAndGraph() {
     }
     for(tickY = 0 ; tickY <= ySpace ; tickY++) {
         
-        ctx.moveTo(((-xMin/xSpace)*canvas.width)-3,(tickY*canvas.height)/ySpace);
-        ctx.lineTo(((-xMin/xSpace)*canvas.width)+3,(tickY*canvas.height)/ySpace);
-        if (yMin + tickY == 0)
+        ctx.moveTo(((-xMin/xSpace)*canvas.width)-3,(1-(tickY/ySpace)*canvas.height));
+        ctx.lineTo(((-xMin/xSpace)*canvas.width)+3,(1-(tickY/ySpace)*canvas.height));
+        if (yMax - tickY === 0)
             continue;
         ctx.font = '12px Arial';
         ctx.align = 'start';
-        ctx.fillText(yMin + tickY,((-xMin/xSpace)*canvas.width)-15,(tickY*canvas.height)/ySpace);
+        ctx.fillText(yMax - tickY,((-xMin/xSpace)*canvas.width)-15,(tickY/ySpace)*canvas.height);
     }
     ctx.strokeStyle = "black";
     ctx.lineWidth = 1;
@@ -97,3 +97,27 @@ document.querySelector('#field').addEventListener('keyup',function() {
     tree = math.parse(expr, scope);
     drawCurveAndGraph();
 }); 
+
+document.getElementById('xmin').addEventListener('keyup',function() {
+    xMin = parseInt(document.querySelector('#xmin').value);
+    xSpace = xMax - xMin;
+    drawCurveAndGraph();
+});
+
+document.getElementById('xmax').addEventListener('keyup',function() {
+    xMax = parseInt(document.querySelector('#xmax').value);
+    xSpace = xMax - xMin;
+    drawCurveAndGraph();
+});
+
+document.getElementById('ymin').addEventListener('keyup',function() {
+    yMin = parseInt(document.querySelector('#ymin').value);
+    ySpace = yMax - yMin;
+    drawCurveAndGraph();
+});
+
+document.getElementById('ymax').addEventListener('keyup',function() {
+    yMax = parseInt(document.querySelector('#ymax').value);
+    ySpace = yMax - yMin;
+    drawCurveAndGraph();
+});
