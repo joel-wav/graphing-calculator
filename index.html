@@ -6,20 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--to load up mathjs without downloading it locally -->
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/mathjs/0.15.0/math.min.js"></script>
-    
+  
+    <link rel="stylesheet" href="https://use.typekit.net/vyq6oxw.css">
     <link rel="stylesheet" href="style.css">
     <title>Graphing Calculator</title>
 </head>
 <body>
     <h1>Graphing Calculator</h1>
-    <p>
-        xmin: <input id = "xmin" type = "number">
-        xmax: <input id = "xmax" type = "number">
-        ymin: <input id = "ymin" type = "number">
-        ymax: <input id = "ymax" type = "number">
-        expression: <input id = "field" type = "text">
-    </p>
-
+    <h4 id = "subheading">Enter Window Dimensions
+        <p id = "note">(Note that the default window size is Left: -10, Right: 10, Bottom: -10, Top: 10)</p>
+    </h4>
+    
+    <div id = "window">
+        <p>Left</p><p>Right</p><p>Bottom</p><p>Top</p>
+        <input id = "xmin" class = "windowdimensions" type = "number">
+        <input id = "xmax" class = "windowdimensions" type = "number">
+        <input id = "ymin" class = "windowdimensions" type = "number">
+        <input id = "ymax" class = "windowdimensions" type = "number"> 
+    </div>
+        
+    <div id = "exprn"> 
+        <p>Enter Function Here</p> <input id = "field" type = "text"> 
+    </div>
+    
     <canvas id = "myCanvas"></canvas>
     <script src = "script.js"></script>
 </body>
